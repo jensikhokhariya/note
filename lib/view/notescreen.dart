@@ -16,6 +16,11 @@ class _NotescreenState extends State<Notescreen> {
   TextEditingController n1 = TextEditingController();
 
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
@@ -36,6 +41,9 @@ class _NotescreenState extends State<Notescreen> {
               ElevatedButton(
                 onPressed: () {
                   DBhelper.intence.insert(n1.text);
+                  homecontroller.getdata();
+
+                  Get.back();
                 },
                 child: Text("Add"),
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.pink),

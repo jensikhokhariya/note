@@ -4,11 +4,11 @@ import 'package:note/controller/dbhelper.dart';
 
 class Homecontroller extends GetxController{
   RxList l1 = [].obs;
-  @override
-  void onInit() {
-    super.onInit();
-    getdata();
-  }
+  // @override
+  // void onInit() {
+  //   super.onInit();
+  //   getdata();
+  // }
   void getdata() async{
     l1.value =await DBhelper.intence.readdata();
   }

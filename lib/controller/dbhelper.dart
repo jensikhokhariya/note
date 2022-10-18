@@ -24,7 +24,7 @@ class DBhelper{
     String path = join(dir.path,"jensi.db");
 
     return openDatabase(path,version: 1,onCreate: (db,version){
-      String query= "CREATE TABLE todo (id INTEGER PRIMARY KEY AUTOINCREMENT,note String)";
+      String query= "CREATE TABLE todo (id INTEGER PRIMARY KEY AUTOINCREMENT,note TEXT)";
       db.execute(query);
     });
   }
@@ -37,7 +37,7 @@ class DBhelper{
     database = await checkdb();
     database!.update("todo", {"note":note},where: "id = ?",whereArgs: [id]);
   }
-  void delet(String note,String id)async{
+  void delete(String note,String id)async{
     database = await checkdb();
     database!.delete("todo",where: "id = ?",whereArgs: [id]);
   }
