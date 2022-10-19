@@ -46,7 +46,7 @@ class _NotescreenState extends State<Notescreen> {
                   Get.back();
                 },
                 child: Text("Add"),
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.pink),
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.orange),
               ),
             ],
           ),

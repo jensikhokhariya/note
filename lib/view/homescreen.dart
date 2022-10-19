@@ -3,8 +3,6 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:note/controller/dbhelper.dart';
 import 'package:note/controller/homecontroller.dart';
-import 'package:note/view/notescreen.dart';
-
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -28,28 +26,36 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Scaffold(
         appBar: AppBar(
           title: Text("NOTES"),
-          backgroundColor: Colors.pink,
+          backgroundColor: Colors.orange,
           centerTitle: true,
         ),
         body: Obx(
           () => ListView.builder(
             itemCount: homecontroller.l1.length,
             itemBuilder: (context, index) {
-              return ListTile(
-                leading: Text("${homecontroller.l1[index]['id']}"),
-                title: Text("${homecontroller.l1[index]['note']}"),
-                trailing: SizedBox(
-                  height: 70,
-                  width: 100,
-                  child: Row(
-                    children: [
-                      IconButton(
-                        onPressed: () {
-                          update("${homecontroller.l1[index]['id']}");
-                        },
-                        icon: Icon(Icons.edit,color: Colors.green.shade800,),
-                      ),
-                    ],
+              return Card(
+                child: ListTile(
+                  leading: Text("${homecontroller.l1[index]['id']}"),
+                  title: Text("${homecontroller.l1[index]['note']}"),
+                  trailing: SizedBox(
+                    height: 70,
+                    width: 150,
+                    child: Row(
+                      children: [
+                        IconButton(
+                          onPressed: () {
+                            update("${homecontroller.l1[index]['id']}");
+                          },
+                          icon: Icon(Icons.edit,color: Colors.green.shade800,),
+                        ),
+                        SizedBox(width: 10,),
+                        IconButton(
+                          onPressed: () {
+                          },
+                          icon: Icon(Icons.delete,color: Colors.red,),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               );
@@ -60,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
           onPressed: () {
             Get.toNamed('/home');
           },
-          backgroundColor: Colors.pink,
+          backgroundColor: Colors.orange,
           child: Icon(Icons.add),
         ),
       ),
