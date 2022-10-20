@@ -24,6 +24,11 @@ class _NotescreenState extends State<Notescreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          title: Text("Add Note"),
+          centerTitle: true,
+          backgroundColor: Colors.orange,
+        ),
         body: Padding(
           padding: EdgeInsets.all(10),
           child: Column(

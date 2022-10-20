@@ -37,7 +37,7 @@ class DBhelper{
     database = await checkdb();
     database!.update("todo", {"note":note},where: "id = ?",whereArgs: [id]);
   }
-  void delete(String note,String id)async{
+  void delete(String id)async{
     database = await checkdb();
     database!.delete("todo",where: "id = ?",whereArgs: [id]);
   }

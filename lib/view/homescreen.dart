@@ -34,27 +34,35 @@ class _HomeScreenState extends State<HomeScreen> {
             itemCount: homecontroller.l1.length,
             itemBuilder: (context, index) {
               return Card(
-                child: ListTile(
-                  leading: Text("${homecontroller.l1[index]['id']}"),
-                  title: Text("${homecontroller.l1[index]['note']}"),
-                  trailing: SizedBox(
-                    height: 70,
-                    width: 150,
-                    child: Row(
-                      children: [
-                        IconButton(
-                          onPressed: () {
-                            update("${homecontroller.l1[index]['id']}");
-                          },
-                          icon: Icon(Icons.edit,color: Colors.green.shade800,),
-                        ),
-                        SizedBox(width: 10,),
-                        IconButton(
-                          onPressed: () {
-                          },
-                          icon: Icon(Icons.delete,color: Colors.red,),
-                        ),
-                      ],
+                child: Container(
+                  color: Colors.orange.shade50,
+                  child: ListTile(
+                    leading: Text("${homecontroller.l1[index]['id']}"),
+                    title: Text("${homecontroller.l1[index]['note']}"),
+                    trailing: SizedBox(
+                      height: 70,
+                      width: 150,
+                      child: Row(
+                        children: [
+                          IconButton(
+                            onPressed: () {
+                              note = TextEditingController(
+                                text: homecontroller.l1[index]['note'],
+                              );
+                              update("${homecontroller.l1[index]['id']}");
+                            },
+                            icon: Icon(Icons.edit,color: Colors.green.shade800,),
+                          ),
+                          SizedBox(width: 10,),
+                          IconButton(
+                            onPressed: () {
+                              DBhelper.intence.delete("${homecontroller.l1[index]['id']}");
+                              homecontroller.getdata();
+                            },
+                            icon: Icon(Icons.delete,color: Colors.red,),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -84,8 +92,8 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           SizedBox(height: 10,),
           ElevatedButton(onPressed: (){
-            homecontroller.getdata();
             DBhelper.intence.update(note.text, id);
+            homecontroller.getdata();
           }, child: Text("creat"),),
         ],
       );
